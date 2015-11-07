@@ -6,7 +6,9 @@ class HomeController < ApplicationController
       :client_id     => '3MVG9KI2HHAq33RxE3uJ6fN7r8Ni2mAGzpVhlQeKePV7GxYdNGe65yXkxVk',
       :client_secret => '915198885628210263'
 
-    @leads = client.query("select id, name from Lead");
+    @newLead = client.create('Lead', FirstName: 'Daniel', MiddleName: 'Oliveira', LastName: 'Filho', Status: 'New', Company: 'xdd');
+
+    @leads = client.query("select id, name, status, company from Lead");
 
   end
 

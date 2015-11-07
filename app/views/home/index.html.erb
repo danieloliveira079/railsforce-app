@@ -3,12 +3,16 @@
   <tr>
     <th>Id</th>
     <th>Name</th>
+    <th>Status</th>
+    <th>Company</th>
   </tr>
-
+<%= debug @newLead %>
 <% @leads.each do |lead| %>
   <tr>
     <td><%= lead.Id %></td>
     <td><%= lead.Name %></td>
+    <td><%= lead.Status %></td>
+    <td><%= lead.Company %></td>
   </tr>
 <% end %>
 </table>
