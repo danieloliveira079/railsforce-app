@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/about' => 'home#about'
   get '/leadsrd' => 'home#leadsrd'
+  get '/leadsforce'=> 'home#leadsforce'
   post '/salesforce'=> 'home#salesforce'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

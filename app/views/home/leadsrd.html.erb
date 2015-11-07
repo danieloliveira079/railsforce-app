@@ -1,6 +1,8 @@
 <div class="jumbotron">
      <h3>Awesome! You have <%= @leadsrd.count %> Lead(s) ready to go.</h3>
-     <p>Now you can pick up who you want to submit to Salesforce.</p>
+     <p>Now you can pick up who you want to submit to Salesforce. </p>
+     <p>If you are just interested in the current Salesforce Leads list you can check that out by clicking on the button below.</p>
+     <p><a class="btn btn-primary btn-lg" id="btnselectall" href="/leadsforce" role="button">View Current Leads</a></p>
 </div>
   <div>
     <%= form_tag("/salesforce", method: "post") do %>

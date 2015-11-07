@@ -1,8 +1,8 @@
 <div class="jumbotron">
   <% if current_user %>
-     <h3>Hello <%= current_user.name %>, welcome back!</h3>
-     <p>Looks like your are not ready for submit your list of Leads from RD Station to Salesforce!</p>
-     <p>Let's start importing some data from RD Station. The first thing you should be doing is pull your data by clicking the button below.</p>
+     <h3>Hello <%= current_user.name %></h3>
+     <p>Looks like we have nothing selected yet to be sent to Salesforce.</p>
+     <p>Let's start importing some data from RD Station. The first thing you should be doing is to be pulling your data by clicking on the button below.</p>
      <p><a class="btn btn-primary btn-lg" id="get-from-rd" href="/leadsrd" role="button">Get Leads from RD Station</a></p>
   <% else %>
      <p><a class="btn btn-primary btn-lg" id="sign_in" href="/auth/salesforce" role="button">Sign in with Salesforce</a></p>

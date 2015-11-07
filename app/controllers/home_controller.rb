@@ -1,22 +1,6 @@
 class HomeController < ApplicationController
   def index
 
-  #  @leads = []
-
-  #  if current_user
-
-  #      client = Restforce.new :api_version => "32.0", :oauth_token => current_user.oauth_token,
-  #        :refresh_token => current_user.refresh_token,
-  #        :instance_url  => current_user.instance_url,
-  #        :client_id     => '3MVG9KI2HHAq33RxE3uJ6fN7r8Ni2mAGzpVhlQeKePV7GxYdNGe65yXkxVk',
-  #        :client_secret => '915198885628210263'
-
-         #@newLead = client.create('Lead', FirstName: 'Daniel', MiddleName: 'Oliveira', LastName: 'Filho', Status: 'New', Company: 'xdd');
-
-  #       @leads = client.query("select id, name, status, company from Lead");
-
-    #end
-
   end
 
   def about
@@ -27,17 +11,31 @@ class HomeController < ApplicationController
 
   end
 
-  def salesforce
+  def leadsforce
+    if current_user
 
-    @params = params[:lead_id]
+      client = Restforce.new :api_version => "32.0", :oauth_token => current_user.oauth_token,
+        :refresh_token => current_user.refresh_token,
+        :instance_url  => current_user.instance_url,
+        :client_id     => '3MVG9KI2HHAq33RxE3uJ6fN7r8Ni2mAGzpVhlQeKePV7GxYdNGe65yXkxVk',
+        :client_secret => '915198885628210263'
+
+       @leadsforce = client.query("select id, firstname, middlename , lastname, status, company, email, website, phone, title from Lead");
+    end
+  end
+
+  def salesforce
 
     if current_user
 
-        client = Restforce.new :api_version => "32.0", :oauth_token => current_user.oauth_token,
-          :refresh_token => current_user.refresh_token,
-          :instance_url  => current_user.instance_url,
-          :client_id     => '3MVG9KI2HHAq33RxE3uJ6fN7r8Ni2mAGzpVhlQeKePV7GxYdNGe65yXkxVk',
-          :client_secret => '915198885628210263'
+      @params = params[:lead_id]
+      @totalImported = 0
+
+      client = Restforce.new :api_version => "32.0", :oauth_token => current_user.oauth_token,
+        :refresh_token => current_user.refresh_token,
+        :instance_url  => current_user.instance_url,
+        :client_id     => '3MVG9KI2HHAq33RxE3uJ6fN7r8Ni2mAGzpVhlQeKePV7GxYdNGe65yXkxVk',
+        :client_secret => '915198885628210263'
 
         @params.each do |p|
           lead = Lead.find_by(id: p)
@@ -51,6 +49,7 @@ class HomeController < ApplicationController
               Website: lead.website,
               Phone: lead.phone,
               Title: lead.job_title);
+              @totalImported += 1
         end
 
        @leads = client.query("select id, firstname, middlename , lastname, status, company, email, website, phone, title from Lead");
