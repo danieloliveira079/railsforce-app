@@ -1,0 +1,19 @@
+<h3>Salesforce Leads</h3>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Company</th>
+  </tr>
+
+<% @leads.each do |lead| %>
+  <tr>
+    <td><%= lead.Id %></td>
+    <td><%= lead.Name %></td>
+    <td><%= lead.Status %></td>
+    <td><%= lead.Company %></td>
+  </tr>
+<% end %>
+</table>

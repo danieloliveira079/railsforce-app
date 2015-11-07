@@ -12,17 +12,7 @@
   <%= render 'home/navbar' %>
 
     <div class="container">
-      <div class="starter-template">
-        <!-- Button trigger modal -->
-        <% if current_user %>
-           <div class="one"><h1>Welcome <%= current_user.name %></h1></div>
-        <% else %>
-           <div class="two"><a id="sign_in" href="/auth/salesforce">Sign in with Salesforce</a></div>
-        <% end %>
-
         <%= yield %>
-
-      </div>
       <%= render 'home/modal_form' %>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
