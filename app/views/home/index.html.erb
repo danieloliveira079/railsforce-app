@@ -1,0 +1,14 @@
+<h3>Lista de Leads RD Station</h3>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+  </tr>
+
+<% @leads.each do |lead| %>
+  <tr>
+    <td><%= lead.Id %></td>
+    <td><%= lead.Name %></td>
+  </tr>
+<% end %>
+</table>
