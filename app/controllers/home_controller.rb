@@ -46,10 +46,14 @@ class HomeController < ApplicationController
               MiddleName: '',
               LastName: lead.last_name,
               Status: 'New',
-              Company: lead.company);
+              Company: lead.company,
+              Email: lead.email,
+              Website: lead.website,
+              Phone: lead.phone,
+              Title: lead.job_title);
         end
 
-       @leads = client.query("select id, name, status, company from Lead");
+       @leads = client.query("select id, firstname, middlename , lastname, status, company, email, website, phone, title from Lead");
     end
   end
 
