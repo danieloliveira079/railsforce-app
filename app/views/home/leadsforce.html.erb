@@ -3,10 +3,11 @@
      <p>What would you like to do now?</p>
      <p>
        <a class="btn btn-primary btn-lg" id="btnleadsrd" href="/leadsrd" role="button">Select Leads from RD</a>
-       <a class="btn btn-primary btn-lg" id="btngetout" href="http://www.salesforce.com" role="button">Take me to Salesforce</a>       
+       <a class="btn btn-primary btn-lg" id="btngetout" href="http://www.salesforce.com" role="button">Take me to Salesforce</a>
      </p>
 </div>
   <div>
+  <% if @leadsforce.count > 0 %>
     <table class="table table-striped">
       <tr>
         <th>Id</th>
@@ -33,4 +34,5 @@
     </tr>
     <% end %>
     </table>
+  <% end %>
 </div>

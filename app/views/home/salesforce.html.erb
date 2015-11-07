@@ -1,6 +1,13 @@
 <div class="jumbotron">
-     <h3>Congratulations</h3>
-     <p>The process successfully added <b><%= @totalImported%></b> new Leads into your Salesforce Leads List. </p>
+  <% if @totalImported > 0 %>
+     <h3>Congratulations!</h3>
+     <p>The process successfully added <b><%= @totalImported%></b> new Lead(s) into your Salesforce Leads List. </p>
      <p>Let's crack on and start making business!</p>
      <p><a class="btn btn-primary btn-lg" id="btnselectall" href="http://www.salesforce.com" role="button">Take me to Salesforce</a></p>
+  <% else %>
+    <h3>Nothing Added to Salesforce!</h3>
+    <p>The process did not import any new Lead into your Salesforce Leads List. </p>
+    <p>Please go back and restart the process!</p>
+    <p><a class="btn btn-primary btn-lg" id="btnstartover" href="/leadsrd" role="button">Start Over</a></p>
+  <% end %>
 </div>

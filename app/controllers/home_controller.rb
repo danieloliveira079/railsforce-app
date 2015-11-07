@@ -37,19 +37,21 @@ class HomeController < ApplicationController
         :client_id     => '3MVG9KI2HHAq33RxE3uJ6fN7r8Ni2mAGzpVhlQeKePV7GxYdNGe65yXkxVk',
         :client_secret => '915198885628210263'
 
-        @params.each do |p|
-          lead = Lead.find_by(id: p)
-          newLead = client.create('Lead',
-              FirstName: lead.name,
-              MiddleName: '',
-              LastName: lead.last_name,
-              Status: 'New',
-              Company: lead.company,
-              Email: lead.email,
-              Website: lead.website,
-              Phone: lead.phone,
-              Title: lead.job_title);
-              @totalImported += 1
+        if @params != nil
+            @params.each do |p|
+              lead = Lead.find_by(id: p)
+              newLead = client.create('Lead',
+                  FirstName: lead.name,
+                  MiddleName: '',
+                  LastName: lead.last_name,
+                  Status: 'New',
+                  Company: lead.company,
+                  Email: lead.email,
+                  Website: lead.website,
+                  Phone: lead.phone,
+                  Title: lead.job_title);
+                  @totalImported += 1
+            end
         end
 
        @leads = client.query("select id, firstname, middlename , lastname, status, company, email, website, phone, title from Lead");

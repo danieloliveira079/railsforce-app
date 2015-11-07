@@ -7,7 +7,6 @@
   <div>
     <%= form_tag("/salesforce", method: "post") do %>
     <p>
-      <a class="btn btn-primary btn-lg" id="btnselectall" href="#" role="button">Select All</a>
       <button class="btn btn-primary btn-lg" id="submit" type="submit" role="button">Submit to Salesforce</button>
     </p>
     <table class="table table-striped">
@@ -21,7 +20,7 @@
         <th>Phone</th>
         <th>WebSite</th>
         <th>Status</th>
-        <th></th>
+        <th><%= check_box_tag 'selectall', -1%></th>
       </tr>
     <% @leadsrd.each do |l| %>
     <tr>
@@ -34,7 +33,7 @@
       <td><%= l.phone %></td>
       <td><%= l.website %></td>
       <td><%= l.status %></td>
-      <td><%= check_box_tag 'lead_id[]', l.id %></td>
+      <td><%= check_box_tag 'lead_id[]', l.id, false, class: 'lead-option' %></td>
     </tr>
     <% end %>
     </table>
