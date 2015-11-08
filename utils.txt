@@ -3,3 +3,6 @@ rake db:migrate:reset #runs db:drop db:create db:migrate
 
 $ rails console
 Insert Lead - Lead.create name: 'John', last_name: 'Hall', email: 'jh@gmail.com', company: 'RD Company', job_title:'Engineer', phone: '123123123', website: 'http://www.jh.com', status: 'New'
+
+Installing postgresql
+gem install pg -- --with-pg-include='/Applications/Postgres.app/Contents/Versions/9.4/include/'
