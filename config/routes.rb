@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   resources :leads
+
   root 'home#index'
 
   get '/about' => 'home#about'
   get '/leadsrd' => 'home#leadsrd'
-  get '/leadsforce'=> 'home#leadsforce'
-  post '/salesforce'=> 'home#salesforce'
+  get '/leadsforce' => 'home#leadsforce'
+  post '/salesforce' => 'home#salesforce'
+  delete '/leads' => 'leads#destroy'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
