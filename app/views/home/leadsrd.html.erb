@@ -7,10 +7,12 @@
   <div>
     <%= form_tag("/salesforce", method: "post") do %>
     <p>
+      <button class="btn btn-primary btn-lg" id="addNew" type="button" data-toggle="modal" data-target="#myModal" role="button">New Lead</button>
       <button class="btn btn-primary btn-lg" id="submit" type="submit" role="button">Submit to Salesforce</button>
     </p>
     <table class="table table-striped">
       <tr>
+        <th><%= check_box_tag 'selectall', -1%></th>
         <th>Id</th>
         <th>Name</th>
         <th>Last Name</th>
@@ -20,10 +22,11 @@
         <th>Phone</th>
         <th>WebSite</th>
         <th>Status</th>
-        <th><%= check_box_tag 'selectall', -1%></th>
+        <th></th>
       </tr>
     <% @leadsrd.each do |l| %>
     <tr>
+      <td><%= check_box_tag 'lead_id[]', l.id, false, class: 'lead-option' %></td>
       <td><%= l.id %></td>
       <td><%= l.name %></td>
       <td><%= l.last_name %></td>
@@ -33,9 +36,10 @@
       <td><%= l.phone %></td>
       <td><%= l.website %></td>
       <td><%= l.status %></td>
-      <td><%= check_box_tag 'lead_id[]', l.id, false, class: 'lead-option' %></td>
+      <td><%= link_to "Delete", lead_path(l.id), method: "delete", :data => {:confirm => "Delete Lead?"} %></td>
     </tr>
     <% end %>
     </table>
     <% end %>
+    <%= render 'home/modal_form' %>
 </div>
