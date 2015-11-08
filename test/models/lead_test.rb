@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class LeadTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should not save lead without name" do
+    lead = Lead.new
+    assert_not lead.save
+  end
 end

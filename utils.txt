@@ -1,6 +1,9 @@
 ###DB
 rake db:migrate:reset #runs db:drop db:create db:migrate
 
+-Preparing Test DB
+rake db:test:prepare
+
 $ rails console
 Insert Lead - Lead.create name: 'John', last_name: 'Hall', email: 'jh@gmail.com', company: 'RD Company', job_title:'Engineer', phone: '123123123', website: 'http://www.jh.com', status: 'New'
 
