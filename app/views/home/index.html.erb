@@ -7,6 +7,10 @@
   <% else %>
      <h1>Hi there</h1>
      <p>Before we start you must be signed in using your Salesforce account.</p>
+     <%= render 'home/appSettings' %>
      <p><a class="btn btn-primary btn-lg" id="sign_in" href="/auth/salesforce" role="button">Sign in with Salesforce</a></p>
+
+
+
   <% end %>
 </div>
