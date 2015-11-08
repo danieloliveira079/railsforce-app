@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :app_settings
   resources :leads
 
   root 'home#index'

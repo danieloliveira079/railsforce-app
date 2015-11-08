@@ -11,3 +11,8 @@ Lead.create([{name: 'John', last_name: 'Hills', email: 'john.hills@gmail.com', c
              {name: 'Ozzy', last_name: 'Osbourne', email: 'ozzy@mail666.com', company: 'Ozzy Company', job_title: 'Director', phone: '+66 6666666', website: 'http://www.ozzyosbourne.com', status: 'New' },
              {name: 'Jimmy', last_name: 'Page', email: 'jimi.page@ledzeppelin.com', company: 'Led Zeppelin', job_title: 'Lead Guitar', phone: '+33 564464664', website: 'http://www.ledzeppelin.com', status: 'New' },
              {name: 'Jim', last_name: 'Morrison', email: 'jimi.page@ledzeppelin.com', company: 'The Doors', job_title: 'Singer', phone: '+55 78737236', website: 'http://www.thedoors.com', status: 'New' } ])
+
+AppSetting.create([{client_email: 'daniel.oliveira079@gmail.com',
+                    client_id: '3MVG9KI2HHAq33RxE3uJ6fN7r8Ni2mAGzpVhlQeKePV7GxYdNGe65yXkxVk.ySXzgy8KZ52i0QRhlTOpBCkXb',
+                    client_secret: '915198885628210263',
+                    active: true}])

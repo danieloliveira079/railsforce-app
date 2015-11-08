@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
     before_action :set_client, only: [:leadsforce, :salesforce]
   def index
-    
+
   end
 
   def about
@@ -51,11 +51,12 @@ class HomeController < ApplicationController
     helper_method :current_user
 
   def set_client
+    appSettings = AppSetting.where(active:true).take
+
     @client = Restforce.new :api_version => "32.0", :oauth_token => current_user.oauth_token,
       :refresh_token => current_user.refresh_token,
       :instance_url  => current_user.instance_url,
-      #:client_id     => '3MVG9KI2HHAq33RxE3uJ6fN7r8Ni2mAGzpVhlQeKePV7GxYdNGe65yXkxVk',
-      :client_id     => ENV['SALESFORCE_PROVIDER_ID'],
-      :client_secret => ENV['SALESFORCE_PROVIDER_SECRET']
+      :client_id     => appSettings.client_id,
+      :client_secret => appSettings.client_secret
   end
 end
