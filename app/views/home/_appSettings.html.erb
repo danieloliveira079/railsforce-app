@@ -1,34 +1,33 @@
 <div>
-  <div>
-    <button class="btn btn-primary" id="addNew" type="button" data-toggle="modal" data-target="#myModal" role="button">Add Account</button>
-  </div>
   <div class="accounts-list">
+    <%= form_tag("/signin", method: "post", id: "form_signin", class: "form-horizontal") do %>
+    <input type="hidden" name="accountid" />
   <ul class="list-group">
     <% @appSettings.each do |s| %>
-      <li class="list-group-item">
+      <li class="list-group-item" data-id="<%= s.id %>">
         <div class="media">
         <div class="media-left">
-          <a href="#">
-            <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTBlOTM3ZGVjYiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MGU5MzdkZWNiIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40Njg3NSIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true" style="width: 64px; height: 64px;">
-          </a>
+
+            <%= image_tag gravatar_url(s.client_email, 64), alt: "" %>
+
         </div>
         <div class="media-body">
           <h4 class="media-heading"> <%= s.client_email %></h4>
             CLIENT_ID: <%= s.client_id %></br>
             CLIENT_SECRET: <%= s.client_secret %>
         </div>
-        <div class="media-right">
-          <a href="#">
-            <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTBlOTM3ZGRiMyB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MGU5MzdkZGIzIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMy40Njg3NSIgeT0iMzYuNSI+NjR4NjQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" data-holder-rendered="true" style="width: 64px; height: 64px;">
-          </a>
-        </div>
       </div>
       </li>
     <% end%>
   </ul>
+  <% end %>
+
 </div>
   <div class="alert alert-danger" role="alert">
     <b>Important</b>: The CLIENT_ID and CLIENT_SECRET are being shown just as a matter of demostrantion. They would not be visible in a real world application.
+  </div>
+  <div>
+    <button class="btn btn-primary" id="addNew" type="button" data-toggle="modal" data-target="#myModal" role="button">Add Account</button>
   </div>
 </div>
 <!-- Modal -->
@@ -66,3 +65,13 @@
 </div>
 </div>
 <% end %>
+<script>
+$('.list-group-item').click(function () {
+    var eid = $(this).attr("data-id");
+    var $frm = $('#form_signin');
+    //set the value of the hidden element
+    $frm.find('input[name="accountid"]').val(eid);
+    //submit the form
+    $frm.submit();
+});
+</script>

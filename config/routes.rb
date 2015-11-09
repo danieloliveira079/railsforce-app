@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/leadsforce' => 'home#leadsforce'
   post '/salesforce' => 'home#salesforce'
   delete '/leads' => 'leads#destroy'
+  post '/signin' => 'appsettings#active'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match '/auth/:provider/setup' => 'sessions#setup', via: [:get, :post]

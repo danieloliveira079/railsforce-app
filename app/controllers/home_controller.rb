@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
     before_action :set_client, only: [:leadsforce, :salesforce]
   def index
-    @appSettings = AppSetting.all
+    @appSettings = AppSetting.order(:id)
   end
 
   def about

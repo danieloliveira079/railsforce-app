@@ -12,6 +12,16 @@ class AppsettingsController < ApplicationController
     redirect_to root_path
   end
 
+  def active
+    active = AppSetting.update_all active:false
+
+    app = AppSetting.find(params[:accountid])
+    app.active = true;
+    app.save
+
+    redirect_to '/auth/salesforce'
+  end
+
   private
 
     def set_appsetting
