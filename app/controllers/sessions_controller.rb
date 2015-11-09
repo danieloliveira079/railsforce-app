@@ -12,8 +12,12 @@ class SessionsController < ApplicationController
       render :text => "Omniauth setup phase.", :status => 404
     end
 
-    def destroy
+    def changeaccount
       session[:user_id] = nil
+      redirect_to root_url
+    end
+
+    def destroy
       session[:authenticated] = false
       redirect_to root_url
     end

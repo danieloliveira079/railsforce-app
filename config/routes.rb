@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   match '/auth/:provider/setup' => 'sessions#setup', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+  match 'changeaccount', to: 'sessions#changeaccount', as: 'changeaccount', via: [:get, :post]
 
   # get 'home/index'
 
