@@ -1,5 +1,7 @@
+require 'salesforce_rdstation'
+
 class HomeController < ApplicationController
-    before_action :set_client, only: [:leadsforce, :salesforce]
+    before_action :set_client_config, only: [:leadsforce, :salesforce]
     before_action :set_run, only: [:index, :login]
 
   def index
@@ -22,7 +24,7 @@ class HomeController < ApplicationController
 
   def leadsforce
     if current_user
-       @leadsforce = @client.query("select id, firstname, middlename , lastname, status, company, email, website, phone, title from Lead");
+       @leadsforce = @client.getAllLeads
     end
   end
 
@@ -35,21 +37,23 @@ class HomeController < ApplicationController
         if @params != nil
             @params.each do |p|
               lead = Lead.find_by(id: p)
-              newLead = @client.create('Lead',
-                  FirstName: lead.name,
-                  MiddleName: '',
-                  LastName: lead.last_name,
-                  Status: 'New',
-                  Company: lead.company,
-                  Email: lead.email,
-                  Website: lead.website,
-                  Phone: lead.phone,
-                  Title: lead.job_title);
-                  @totalImported += 1
+              payload = {
+                :name => lead.name,
+                :middleName => "",
+                :lastName => lead.last_name,
+                :status => "New",
+                :company => lead.company,
+                :email => lead.email,
+                :website => lead.website,
+                :phone => lead.phone,
+                :jobTitle => lead.job_title
+              }
+              newLead = @client.create(payload);
+              @totalImported += 1
             end
         end
 
-       @leads = @client.query("select id, firstname, middlename , lastname, status, company, email, website, phone, title from Lead");
+       @leads = @client.getAllLeads
     end
   end
 
@@ -59,14 +63,18 @@ class HomeController < ApplicationController
   end
     helper_method :current_user
 
-  def set_client
+  def set_client_config
     appSettings = AppSetting.where(active:true).take
 
-    @client = Restforce.new :api_version => "32.0", :oauth_token => current_user.oauth_token,
-      :refresh_token => current_user.refresh_token,
-      :instance_url  => current_user.instance_url,
-      :client_id     => appSettings.client_id,
-      :client_secret => appSettings.client_secret
+    client_keys = {
+       "api_version" => "32.0",
+       "oauth_token" => current_user.oauth_token,
+       "refresh_token" => current_user.refresh_token,
+       "instance_url" => current_user.instance_url,
+       "client_id" => appSettings.client_id,
+       "client_secret" => appSettings.client_secret
+     }
+     @client = Salesforce::Lead.new(client_keys)
   end
 
   def set_run

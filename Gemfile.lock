@@ -130,6 +130,8 @@ GEM
       faraday_middleware (>= 0.8.8)
       hashie (>= 1.2.0, < 4.0)
       json (>= 1.7.5, < 1.9.0)
+    salesforce_rdstation (0.0.1)
+      restforce (~> 2.1)
     sass (3.4.19)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -185,6 +187,7 @@ DEPENDENCIES
   pg
   rails (= 4.2.4)
   restforce
+  salesforce_rdstation
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   slim-rails
