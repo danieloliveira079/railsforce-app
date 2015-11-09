@@ -1,10 +1,19 @@
 class HomeController < ApplicationController
     before_action :set_client, only: [:leadsforce, :salesforce]
+    before_action :set_run, only: [:index, :login]
+
   def index
-    @appSettings = AppSetting.order(:id)
+
   end
 
-  def about
+  def login
+    if params[:text] == "rdtest@demo.com" && params[:pwd] == "rd2015"
+      session[:authenticated] = true
+      redirect_to root_path
+    else
+      @err = "The email and password that you entered don't match."
+      render 'home/index'
+    end
   end
 
   def leadsrd
@@ -58,5 +67,10 @@ class HomeController < ApplicationController
       :instance_url  => current_user.instance_url,
       :client_id     => appSettings.client_id,
       :client_secret => appSettings.client_secret
+  end
+
+  def set_run
+      @authenticated = session[:authenticated]
+      @appSettings = AppSetting.order(:id)
   end
 end

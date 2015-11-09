@@ -6,16 +6,15 @@ class SessionsController < ApplicationController
     end
 
     def setup
-
       appsettings = AppSetting.where(active:true).take
-
       request.env['omniauth.strategy'].options[:client_id] = appsettings.client_id
-      request.env['omniauth.strategy'].options[:client_secret] = appsettings.client_secret 
+      request.env['omniauth.strategy'].options[:client_secret] = appsettings.client_secret
       render :text => "Omniauth setup phase.", :status => 404
     end
 
     def destroy
       session[:user_id] = nil
+      session[:authenticated] = false
       redirect_to root_url
     end
   end
