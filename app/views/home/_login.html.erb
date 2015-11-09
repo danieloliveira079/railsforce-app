@@ -5,14 +5,14 @@
             <div class="account-wall">
                 <img class="profile-img" src="http://guru-ce.github.io/assets/images/profile.png" alt="">
                 <%= form_tag("/login", method: "post", id: "form_login", class: "form-signin") do %>
-                <input type="text" name="text" class="form-control" placeholder="Email" required autofocus>
-                <input type="password" name="pwd" class="form-control" placeholder="Password" required>
+                <input type="text" id="inputtext" name="text" class="form-control" placeholder="Email" required autofocus>
+                <input type="password" id="inputpwd" name="pwd" class="form-control" placeholder="Password" required>
                 <div class="error-message">
                   <%= @err %>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                 <% end %>
-            </div>            
+            </div>
         </div>
     </div>
 </div>

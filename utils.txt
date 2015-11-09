@@ -9,3 +9,7 @@ Insert Lead - Lead.create name: 'John', last_name: 'Hall', email: 'jh@gmail.com'
 
 Installing postgresql
 gem install pg -- --with-pg-include='/Applications/Postgres.app/Contents/Versions/9.4/include/'
+
+JS
+Fill login form using console
+$('#inputtext').val('rdtest@demo.com');$('#inputpwd').val('rd2015');
