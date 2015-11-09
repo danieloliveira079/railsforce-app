@@ -6,16 +6,17 @@
     <% @appSettings.each do |s| %>
       <li class="list-group-item" data-id="<%= s.id %>">
         <div class="media">
-        <div class="media-left">
-
-            <%= image_tag gravatar_url(s.client_email, 64), alt: "" %>
-
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading"> <%= s.client_email %></h4>
-            CLIENT_ID: <%= s.client_id %></br>
-            CLIENT_SECRET: <%= s.client_secret %>
-        </div>
+            <div class="media-left">
+                <%= image_tag gravatar_url(s.client_email, 64), alt: "" %>
+            </div>
+            <div class="media-body">
+              <div><h4 class="media-heading"> <%= s.client_email %></h4></div>
+                CLIENT_ID: <%= s.client_id[0,50] + "..." %></br>
+                CLIENT_SECRET: <%= s.client_secret %>
+            </div>
+            <div class="media-right">
+                <button type="button" class="btnDelete btn btn-danger btn-sm">Delete</button>
+            </div>
       </div>
       </li>
     <% end%>
@@ -76,5 +77,9 @@ $('.list-group-item').click(function () {
     $frm.find('input[name="accountid"]').val(eid);
     //submit the form
     $frm.submit();
+});
+
+$(".btnDelete").click(function(){
+    $('#form_signin').attr('action', "/deleteaccount").submit();
 });
 </script>

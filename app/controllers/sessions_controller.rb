@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+      session[:user_id] = nil
       session[:authenticated] = false
       redirect_to root_url
     end

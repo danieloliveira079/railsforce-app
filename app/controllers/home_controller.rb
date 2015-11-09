@@ -18,16 +18,19 @@ class HomeController < ApplicationController
     end
   end
 
+  # GET - List all Leads from DB "Imported from RD Station"
   def leadsrd
     @leadsrd = Lead.all
   end
 
+  # GET - List all Leads from Salesforce using salesforce_rdstation gem
   def leadsforce
     if current_user
        @leadsforce = @client.getAllLeads
     end
   end
 
+  #POST - Submit all selected Leads from RD Station to SalesForce using salesforce_rdstation gem
   def salesforce
     if current_user
 
@@ -79,6 +82,8 @@ class HomeController < ApplicationController
 
   def set_run
       @authenticated = session[:authenticated]
+
+      # Get all stored accounts from DB
       @appSettings = AppSetting.order(:id)
   end
 end

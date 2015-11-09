@@ -22,6 +22,12 @@ class AppsettingsController < ApplicationController
     redirect_to '/auth/salesforce'
   end
 
+  def deleteaccount
+    app = AppSetting.find(params[:accountid])
+    app.destroy
+    redirect_to root_path
+  end
+
   private
 
     def set_appsetting
