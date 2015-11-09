@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+=begin
 Lead.create([{name: 'John', last_name: 'Hills', email: 'john.hills@gmail.com', company: 'Green Field', job_title: 'CEO', phone: '+44 87677788', website: 'http://www.greenfield.com', status: 'New' },
              {name: 'Mary', last_name: 'Jane', email: 'mary.jane@gmail.com', company: 'New Marketing', job_title: 'Sales', phone: '+33 564464664', website: 'http://www.newmarketing.com', status: 'New' },
              {name: 'Paul', last_name: 'Adams', email: 'paul.adams@hotmail.com', company: 'Orange Juice', job_title: 'Project Manager', phone: '+44 423223223', website: 'http://www.orangejuice.com', status: 'New' },
@@ -15,4 +16,10 @@ Lead.create([{name: 'John', last_name: 'Hills', email: 'john.hills@gmail.com', c
 AppSetting.create([{client_email: 'daniel.oliveira079@gmail.com',
                     client_id: '3MVG9KI2HHAq33RxE3uJ6fN7r8Ni2mAGzpVhlQeKePV7GxYdNGe65yXkxVk.ySXzgy8KZ52i0QRhlTOpBCkXb',
                     client_secret: '915198885628210263',
+                    active: true}])
+=end
+
+AppSetting.create([{client_email: 'daniel.oliveira079@gmail.com',
+                    client_id: '3MVG9KI2HHAq33RxE3uJ6fN7r8GeOpuHl.IOo29rNPqxG1WtT_X9S4Wr1nn0HCqk3aezRuqpRQYnBNw05hAP5',
+                    client_secret: '5584304946415868082',
                     active: true}])
