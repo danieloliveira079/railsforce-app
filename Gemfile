@@ -39,7 +39,7 @@ gem 'omniauth-salesforce'
 
 gem 'slim-rails'
 
-gem 'salesforce_rdstation'
+gem 'salesforce_rdstation', :git => "git://github.com/danieloliveira079/salesforce_rdstation.git"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
