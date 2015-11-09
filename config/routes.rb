@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete '/leads' => 'leads#destroy'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match '/auth/:provider/setup' => 'sessions#setup', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
