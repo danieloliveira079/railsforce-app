@@ -51,7 +51,7 @@ class HomeController < ApplicationController
                 :phone => lead.phone,
                 :jobTitle => lead.job_title
               }
-              newLead = @client.create(payload);
+              newLead = @client.create(payload)
               @totalImported += 1
             end
         end
